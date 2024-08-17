@@ -50,21 +50,24 @@
 
         .error-btn {
             margin-top: 20px;
-            padding: 10px 20px;
+            padding: 15px 30px;
             background-color: #242424;
-            border: 2px solid #000000;
-            border-radius: 5px;
+            border: 3px solid #000000;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            transition: transform 0.1s ease-in-out;
         }
 
-        .error-btn:hover {
-            background-color: #000000;
+        .error-btn:active {
+            transform: scale(0.95);
         }
 
         .popup {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
             position: fixed;
             top: 50%;
             left: 50%;
@@ -75,6 +78,11 @@
             padding: 20px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
             z-index: 10;
+        }
+
+        .popup.show {
+            display: block;
+            opacity: 1;
         }
 
         .popup .close-btn {
@@ -95,6 +103,8 @@
 
         .overlay {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
             position: fixed;
             top: 0;
             left: 0;
@@ -102,6 +112,11 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 5;
+        }
+
+        .overlay.show {
+            display: block;
+            opacity: 1;
         }
     </style>
 </head>
@@ -152,13 +167,13 @@
 
     <script>
         function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
         }
 
         function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
         }
     </script>
 </body>
