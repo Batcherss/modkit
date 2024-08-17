@@ -48,8 +48,16 @@
             margin-left: 20px;
         }
 
-        .error-btn {
+        .button-container {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .error-btn,
+        .back-btn {
+            margin-top: 10px;
             padding: 15px 30px;
             background-color: #242424;
             border: 3px solid #000000;
@@ -60,7 +68,8 @@
             transition: transform 0.1s ease-in-out;
         }
 
-        .error-btn:active {
+        .error-btn:active,
+        .back-btn:active {
             transform: scale(0.95);
         }
 
@@ -149,7 +158,10 @@
             <p>The-Man-From-...</p>
             <p>ToughAsNails-1...</p>
         </div>
-        <button class="error-btn" onclick="showPopup()">Какие могут быть ошибки?</button>
+        <div class="button-container">
+            <button class="error-btn" onclick="showPopup()">Какие могут быть ошибки?</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">Назад</button>
+        </div>
     </div>
 
     <div class="overlay" id="overlay"></div>
