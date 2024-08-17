@@ -129,6 +129,24 @@
             display: block;
             opacity: 1;
         }
+
+        /* Custom scrollbar styles */
+        .container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: #606060;
+            border-radius: 10px;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #888888;
+        }
     </style>
 </head>
 <body>
