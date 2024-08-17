@@ -16,6 +16,7 @@
             height: 100vh;
             margin: 0;
             font-family: 'Press Start 2P', cursive;
+            overflow: hidden; /* Prevent default scrollbars on the body */
         }
 
         .container {
@@ -25,27 +26,33 @@
             border-radius: 15px;
             padding: 20px;
             box-sizing: border-box;
-            text-align: center;
-            overflow-y: auto;
             position: relative;
+            overflow-y: auto; /* Custom scrollbar for the container */
+        }
+
+        .title-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1000px;
+            background-color: #242424;
+            border-bottom: 2px solid #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
         }
 
         .title {
-            margin-top: 15px;
             font-size: 24px;
             color: #ffffff;
-        }
-
-        .divider {
-            margin: 20px 0;
-            border-bottom: 2px solid #ffffff;
         }
 
         .mod-list {
             font-size: 16px;
             color: #ffffff;
             text-align: left;
-            margin-left: 20px;
+            margin: 20px 20px 20px 0;
         }
 
         .button-container {
@@ -87,7 +94,7 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            z-index: 10;
+            z-index: 20;
         }
 
         .popup.show {
@@ -122,19 +129,39 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 5;
+            z-index: 15;
         }
 
         .overlay.show {
             display: block;
             opacity: 1;
         }
+
+        /* Custom scrollbar styles */
+        .container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #cccccc;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="title-bar">
         <div class="title">Содержание Mod-Kit</div>
-        <div class="divider"></div>
+    </div>
+
+    <div class="container">
         <div class="mod-list">
             <p>BetterFog.jar</p>
             <p>Bookshelf-Forge...</p>
@@ -177,6 +204,7 @@
             <p>3. Возможно, на вашем компьютере недостаточно оперативной памяти, и Minecraft просто не может запуститься.</p>
             <p>Исправить можно, зайдя в настройки и выбрав, сколько выделить оперативной памяти.</p>
         </div>
+        <button class="back-btn" onclick="closePopup()">Закрыть</button>
     </div>
 
     <script>
