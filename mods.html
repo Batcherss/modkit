@@ -28,6 +28,7 @@
             text-align: center;
             overflow-y: auto;
             position: relative;
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
 
         .title {
@@ -146,6 +147,11 @@
 
         .container::-webkit-scrollbar-thumb:hover {
             background: #888888;
+        }
+
+        /* Smooth scroll with JavaScript (optional) */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
