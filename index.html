@@ -26,7 +26,6 @@
             padding: 20px;
             box-sizing: border-box;
             text-align: center;
-            position: relative;
         }
 
         .title {
@@ -51,14 +50,8 @@
             color: #00ff00;
         }
 
-        .button-container {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .modal, .settings-modal, .video-modal {
+        /* Модальное окно */
+        .modal {
             display: none; 
             position: fixed;
             z-index: 1;
@@ -66,14 +59,16 @@
             top: 0;
             width: 100%;
             height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
-        .modal-content, .settings-modal-content, .video-modal-content {
+        .modal-content {
             background-color: #242424;
             margin: 15% auto;
             padding: 20px;
             border-radius: 15px;
             width: 500px;
+            height: 200px;
             position: relative;
             color: #ffffff;
             font-size: 16px;
@@ -93,28 +88,6 @@
         .mod-item {
             margin: 5px 0;
         }
-
-        .settings-modal-content {
-            height: auto;
-            width: auto;
-        }
-
-        .video-modal-content {
-            display: none;
-            height: 100%;
-            width: 100%;
-        }
-
-        .video-modal-content video {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .date-input {
-            font-size: 16px;
-            padding: 5px;
-        }
     </style>
 </head>
 <body>
@@ -128,12 +101,9 @@
                 <a href="mods.html" class="link">| Какие моды? |</a>
             </p>
         </div>
-        <div class="button-container">
-            <button id="openSettings">Настройки</button>
-        </div>
     </div>
 
-    <!-- Модальное окно модов -->
+    <!-- Модальное окно -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
@@ -149,73 +119,21 @@
         </div>
     </div>
 
-    <!-- Модальное окно настроек -->
-    <div id="settingsModal" class="settings-modal">
-        <div class="settings-modal-content">
-            <span class="close" id="closeSettings">&times;</span>
-            <h2>Время</h2>
-            <input type="date" id="datePicker" class="date-input">
-        </div>
-    </div>
-
-    <!-- Модальное окно видео -->
-    <div id="videoModal" class="video-modal">
-        <div class="video-modal-content">
-            <video id="videoPlayer" controls autoplay>
-                <source src="paradox.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео тег.
-            </video>
-        </div>
-    </div>
-
     <script>
-        // Открытие модального окна модов
+        // Открытие модального окна
         document.getElementById('openModal').onclick = function() {
             document.getElementById('myModal').style.display = 'block';
         };
 
-        // Закрытие модального окна модов
+        // Закрытие модального окна
         document.getElementById('closeModal').onclick = function() {
             document.getElementById('myModal').style.display = 'none';
         };
 
-        // Закрытие окна при клике вне модального окна модов
+        // Закрытие окна при клике вне модального окна
         window.onclick = function(event) {
             if (event.target == document.getElementById('myModal')) {
                 document.getElementById('myModal').style.display = 'none';
-            }
-        };
-
-        // Открытие модального окна настроек
-        document.getElementById('openSettings').onclick = function() {
-            document.getElementById('settingsModal').style.display = 'block';
-        };
-
-        // Закрытие модального окна настроек
-        document.getElementById('closeSettings').onclick = function() {
-            document.getElementById('settingsModal').style.display = 'none';
-        };
-
-        // Закрытие окна при клике вне модального окна настроек
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('settingsModal')) {
-                document.getElementById('settingsModal').style.display = 'none';
-            }
-        };
-
-        // Обработка выбора даты
-        document.getElementById('datePicker').onchange = function() {
-            var selectedDate = new Date(this.value);
-            if (selectedDate.getFullYear() === 1990) {
-                document.getElementById('settingsModal').style.display = 'none';
-                document.getElementById('videoModal').style.display = 'block';
-            }
-        };
-
-        // Закрытие модального окна видео при клике вне видео
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('videoModal')) {
-                document.getElementById('videoModal').style.display = 'none';
             }
         };
     </script>
