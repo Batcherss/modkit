@@ -95,6 +95,30 @@
             color: white;
             text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
         }
+
+        /* Tooltip style */
+        .tooltip {
+            position: absolute;
+            background-color: #242424;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            width: 275px;
+            height: 190px;
+            font-size: 14px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Tooltip animation */
+        .tooltip.visible {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-50%);
+        }
     </style>
 </head>
 <body>
@@ -104,13 +128,13 @@
         <div class="link-section">
             <p>
                 <strong>Хоррор сборка | 1.19.2 | Forge |</strong> 
-                <a href="#" class="link" id="openModal1">Скачать</a>
-                <a href="mods.html" class="link">| Какие моды? |</a>
+                <a href="#" class="link" id="openModal1" data-info="Хоррор моды: ToughAsNails, SereneSeasons, RealSeasons, MidnightLurker, Man From TheFog, Geckolib, From TheFog">Скачать</a>
+                <a href="mods.html" class="link" data-info="Нажмите для просмотра...">| Какие моды? |</a>
             </p>
             <p>
                 <strong>RPG Сборка | 1.20.1 | Fabric |</strong> 
-                <a href="#" class="link" id="openModal2">Скачать</a>
-                <a href="rpg_mods.html" class="link">| Какие моды? |</a>
+                <a href="#" class="link" id="openModal2" data-info="Хоррор и шейдеры моды: Scopophobia, Playmate, Lobotomy, CANTBREATHE, The_bath, TheAnomaly, ManFromTheFog, FromTheFog, Oculus, Rubidium">Скачать</a>
+                <a href="mods2.html" class="link" data-info="Нажмите для просмотра...">| Какие моды? |</a>
             </p>
         </div>
     </div>
@@ -119,33 +143,36 @@
     <div id="myModal1" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal1">&times;</span>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/ToughAsNails.jar" class="link">ToughAsNails.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/SereneSeasons.jar" class="link">SereneSeasons.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/RealSeasons.jar" class="link">RealSeasons.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/MidnightLurker.jar" class="link">MidnightLurker.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Man%20From%20TheFog.jar" class="link">Man From TheFog.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Geckolib.jar" class="link">Geckolib.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/From%20TheFog.jar" class="link">From TheFog.jar</a></div>
-            <div class="mod-item"><a href="https://workupload.com/file/DABrWPHq7bz" class="link glow">Download Faster</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/ToughAsNails.jar" class="link" data-info="Мод для жажды/климата">ToughAsNails.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/SereneSeasons.jar" class="link data-info="Сезоны.">SereneSeasons.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/RealSeasons.jar" class="link" data-info="Дополнение для сезонов">RealSeasons.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/MidnightLurker.jar" class="link" data-info="Хоррор мод. Функциональность: появляется только с закатом/ночью">MidnightLurker.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Man%20From%20TheFog.jar" class="link" data-info="Хоррор мод. Фукнциональность: появляется раз 2-3 дня , смотрит на вас , если вы на него не посмотрели то идет вас убивать!">Man From TheFog.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Geckolib.jar" class="link" data-info="Библиотека для хоррор модов.">Geckolib.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/FromTheFog.jar" class="link" data-info="Хоррор мод херобрин. Может пугать вас и кидатся динамитом (1 процент шанса)">From TheFog.jar</a></div>
+            <div class="mod-item"><a href="https://workupload.com/file/DABrWPHq7bz" class="link glow" data-info="Быстро скачать сборку!">Download Faster</a></div>
         </div>
     </div>
 
     <div id="myModal2" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal2">&times;</span>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Scopophobia.jar" class="link">Scopophobia.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Playmate.jar" class="link">Playmate.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Lobotomy(Archived).rar" class="link">[S.A]Lobotomy.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Cantbreathe.jar" class="link">CANTBREATHE.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Thebath.jar" class="link">The_bath.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/TheAnomaly.jar" class="link">TheAnomaly</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/ManFromTheFog.jar" class="link">ManFromTheFog.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/FromTheFog.jar" class="link">FromTheFog.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Oculus.jar" class="link">Oculus.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Rubidium.jar" class="link">Rubidium.jar</a></div>
-            <div class="mod-item"><a href="https://workupload.com/file/6SvwvstFuNV" class="link glow">Archive.zip</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Scopophobia.jar" class="link" data-info="Очень страшный мод! Он появляется в любой момент , функционал большой - не описать!">Scopophobia.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Playmate.jar" class="link" data-info="Приходит каждую ночь и играет с вами в прятки!">Playmate.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Lobotomy(Archived).rar" class="link" data-info="Вы - пациент лоботомии , у вас бывают галюцинации которые будут вас пугать.">[S.A]Lobotomy.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Cantbreathe.jar" class="link" data-info="Не можете дишать.. Это хоррор мод при котором любой звук может значить разное.">CANTBREATHE.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Thebath.jar" class="link" data-info="Будет приходить к вам.. каждые 5 дней , он умеет ломать блоки.">The_bath.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/TheAnomaly.jar" class="link" data-info="Этот стив , аномальный - он будет вызывать большие глюки и будет страшно!">TheAnomaly</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/ManFromTheFog.jar" class="link" data-info="Человек из тумана , будет приходить каждую полудню.">ManFromTheFog.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/FromTheFog.jar" class="link" data-info="Херобрин!">FromTheFog.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Oculus.jar" class="link" data-info="Мод который имитирует оптифайн">Oculus.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Rubidium.jar" class="link" data-info="Библиотека для окулюса!">Rubidium.jar</a></div>
+            <div class="mod-item"><a href="https://workupload.com/file/6SvwvstFuNV" class="link glow" data-info="Архив с модами!">Archive.zip</a></div>
         </div>
     </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
 
     <script>
         // Открытие модальных окон
@@ -170,6 +197,28 @@
                 event.target.style.display = 'none';
             }
         };
+
+        // Tooltip
+        const tooltip = document.getElementById('tooltip');
+        const links = document.querySelectorAll('.link');
+
+        links.forEach(link => {
+            link.addEventListener('mouseover', function(event) {
+                tooltip.textContent = event.target.getAttribute('data-info');
+                tooltip.style.display = 'block';
+            });
+
+            link.addEventListener('mousemove', function(event) {
+                const xOffset = 20; // Смещение по X
+                const yOffset = 20; // Смещение по Y
+                tooltip.style.left = event.pageX + xOffset + 'px';
+                tooltip.style.top = event.pageY + yOffset + 'px';
+            });
+
+            link.addEventListener('mouseout', function() {
+                tooltip.style.display = 'none';
+            });
+        });
     </script>
 </body>
 </html>
