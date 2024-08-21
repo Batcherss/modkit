@@ -50,7 +50,7 @@
             color: #00ff00;
         }
 
-        /* Модальное окно */
+        /* Модальные окна */
         .modal {
             display: none; 
             position: fixed;
@@ -68,11 +68,12 @@
             padding: 20px;
             border-radius: 15px;
             width: 500px;
-            height: 200px;
+            height: 400px; /* Увеличил высоту, чтобы вместить все элементы */
             position: relative;
             color: #ffffff;
             font-size: 16px;
             text-align: left;
+            overflow-y: auto; /* Добавлено для скроллинга */
         }
 
         .close {
@@ -88,6 +89,12 @@
         .mod-item {
             margin: 5px 0;
         }
+
+        /* Glow effect */
+        .glow {
+            color: white;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+        }
     </style>
 </head>
 <body>
@@ -97,16 +104,21 @@
         <div class="link-section">
             <p>
                 <strong>Хоррор сборка | 1.19.2 | Forge |</strong> 
-                <a href="#" class="link" id="openModal">Скачать</a>
+                <a href="#" class="link" id="openModal1">Скачать</a>
                 <a href="mods.html" class="link">| Какие моды? |</a>
+            </p>
+            <p>
+                <strong>RPG Сборка | 1.20.1 | Fabric |</strong> 
+                <a href="#" class="link" id="openModal2">Скачать</a>
+                <a href="rpg_mods.html" class="link">| Какие моды? |</a>
             </p>
         </div>
     </div>
 
-    <!-- Модальное окно -->
-    <div id="myModal" class="modal">
+    <!-- Модальные окна для сборок -->
+    <div id="myModal1" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
+            <span class="close" id="closeModal1">&times;</span>
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/ToughAsNails.jar" class="link">ToughAsNails.jar</a></div>
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/SereneSeasons.jar" class="link">SereneSeasons.jar</a></div>
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/RealSeasons.jar" class="link">RealSeasons.jar</a></div>
@@ -114,26 +126,48 @@
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Man%20From%20TheFog.jar" class="link">Man From TheFog.jar</a></div>
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/Geckolib.jar" class="link">Geckolib.jar</a></div>
             <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/From%20TheFog.jar" class="link">From TheFog.jar</a></div>
-            <div class="mod-item"><a href="https://github.com/Batcherss/modkit/raw/main/EndOfHerobrine.jar" class="link">EndOfHerobrine.jar</a></div>
-            <div class="mod-item"><a href="https://workupload.com/file/DABrWPHq7bz" class="link">Download Faster</a></div>
+            <div class="mod-item"><a href="https://workupload.com/file/DABrWPHq7bz" class="link glow">Download Faster</a></div>
+        </div>
+    </div>
+
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal2">&times;</span>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Scopophobia.jar" class="link">Scopophobia.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Playmate.jar" class="link">Playmate.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Lobotomy.jar" class="link">[S.A]Lobotomy.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Cantbreathe.jar" class="link">CANTBREATHE.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Thebath.jar" class="link">The_bath.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/TheAnomaly" class="link">TheAnomaly</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/ManFromTheFog" class="link">ManFromTheFog.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/FromTheFog.jar" class="link">FromTheFog.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Oculus.jar" class="link">Oculus.jar</a></div>
+            <div class="mod-item"><a href="https://github.com/Batcherss/rpgkit/raw/main/Rubidium.jar" class="link">Rubidium.jar</a></div>
+            <div class="mod-item"><a href="https://workupload.com/file/6SvwvstFuNV" class="link glow">Archive.zip</a></div>
         </div>
     </div>
 
     <script>
-        // Открытие модального окна
-        document.getElementById('openModal').onclick = function() {
-            document.getElementById('myModal').style.display = 'block';
+        // Открытие модальных окон
+        document.getElementById('openModal1').onclick = function() {
+            document.getElementById('myModal1').style.display = 'block';
+        };
+        document.getElementById('openModal2').onclick = function() {
+            document.getElementById('myModal2').style.display = 'block';
         };
 
-        // Закрытие модального окна
-        document.getElementById('closeModal').onclick = function() {
-            document.getElementById('myModal').style.display = 'none';
+        // Закрытие модальных окон
+        document.getElementById('closeModal1').onclick = function() {
+            document.getElementById('myModal1').style.display = 'none';
+        };
+        document.getElementById('closeModal2').onclick = function() {
+            document.getElementById('myModal2').style.display = 'none';
         };
 
-        // Закрытие окна при клике вне модального окна
+        // Закрытие модального окна при клике вне его
         window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                document.getElementById('myModal').style.display = 'none';
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
             }
         };
     </script>
